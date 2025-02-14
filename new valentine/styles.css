@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ffe6f2;
+    min-height: 100vh;
+    position: relative;
+    font-family: 'Marck Script', cursive;
+}
+
+.container {
+    text-align: center;
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    color: #ff0066;
+    font-size: 3.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.heart-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heart {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(45deg, #ff69b4 0%, #ff1493 50%, #ff0066 100%);
+    transform: rotate(45deg);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite, gradient 5s ease infinite;
+    box-shadow: 
+        0 0 40px rgba(255,105,180,0.4),
+        0 0 60px rgba(255,20,147,0.3),
+        15px 15px 25px rgba(0,0,0,0.15);
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -125px;
+    left: 0;
+}
+
+.heart::after {
+    left: -125px;
+    top: 0;
+}
+
+.text {
+    position: absolute;
+    color: white;
+    font-size: 2.1em;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    transform: rotate(-45deg);
+    z-index: 2;
+}
+
+.from {
+    top: 70px;
+    left: 30px;
+}
+
+.to {
+    bottom: 70px;
+    right: 30px;
+}
+
+/* Анимации */
+@keyframes pulse {
+    0% { transform: rotate(45deg) scale(1); }
+    50% { transform: rotate(45deg) scale(1.05); }
+    100% { transform: rotate(45deg) scale(1); }
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.heart:active {
+    transform: rotate(45deg) scale(0.95);
+    box-shadow: 
+        0 0 20px rgba(255,105,180,0.3),
+        0 0 30px rgba(255,20,147,0.2),
+        5px 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Added styles for proper layout */
+.title-container {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Добавление 4 разных сердечных изображений в углы страницы */
+.heart-top-left {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 300px;
+    height: 300px;
+    background: url('heart1.jpg') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.heart-top-right {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    height: 300px;
+    background: url('heart2.jpg') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.heart-bottom-left {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 300px;
+    height: 300px;
+    background: url('heart3.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.heart-bottom-right {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    height: 300px;
+    background: url('heart4.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Новые стили для миньонов */
+
+/* Миньон снизу: отображается под главным сердцем, по центру внизу, размер 250x250px */
+.minion-bottom {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 250px;
+    background: url('minion.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Миньон слева: отображается по левому краю, по центру вертикально, размер 300x300px */
+.minion-left {
+    position: fixed;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    background: url('minion2.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* Миньон справа: отображается по правому краю, по центру вертикально, размер 300x300px */
+.minion-right {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    background: url('minion3.jpg') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 999;
+}
