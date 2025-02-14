@@ -6,7 +6,37 @@ function animateHeart() {
     
     // Добавляем дополнительную анимацию при клике
     heart.classList.add('clicked');
-    setTimeout(() => heart.classList.remove('clicked'), 300);
+    setTimeout(() => {
+        heart.classList.remove('clicked');
+        sendTelegramMessage(); // Отправляем сообщение в Telegram
+    }, 300);
+}
+
+// Изменяем функцию sendTelegramMessage для отображения сообщения в случайном месте
+function sendTelegramMessage() {
+    const loveMessage = document.createElement('div');
+    loveMessage.textContent = "Я тебя люблю ❤️";
+    loveMessage.style.position = "absolute";
+    loveMessage.style.fontSize = "24px";
+    loveMessage.style.fontWeight = "bold";
+    loveMessage.style.color = "#ff0066";
+    loveMessage.style.zIndex = "1000";
+    
+    // Вычисляем случайные координаты так, чтобы сообщение было видно на экране
+    const maxX = window.innerWidth - 200; // учитывая ширину сообщения
+    const maxY = window.innerHeight - 50; // учитывая высоту сообщения
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+    
+    loveMessage.style.left = randomX + "px";
+    loveMessage.style.top = randomY + "px";
+    
+    document.body.appendChild(loveMessage);
+    
+    // Удаляем сообщение через 2 секунды
+    setTimeout(() => {
+        loveMessage.remove();
+    }, 2000);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
